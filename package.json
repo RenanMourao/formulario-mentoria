@@ -6,5 +6,23 @@
   "devDependencies": {
     "prettier": "^3.0.2",
     "prettier-plugin-tailwindcss": "^0.5.3"
-  }
+  },
+  "name": "formulario-mentoria",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "start": "tailwindcss -i ./src/style.css -o ./dist/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RenanMourao/formulario-mentoria.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RenanMourao/formulario-mentoria/issues"
+  },
+  "homepage": "https://github.com/RenanMourao/formulario-mentoria#readme",
+  "description": ""
 }
