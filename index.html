@@ -12,7 +12,10 @@
       href="./assets/images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
 
     <!-- ===================tailwind====================== -->
 
@@ -31,6 +34,13 @@
               xl: "5rem",
               "2xl": "6rem",
             },
+            fontFamily: {
+              'sans': ['Roboto', 'ui-sans-serif', 'system-ui', ...],
+              'serif': ['Roboto', 'ui-serif', 'Georgia', ...],
+              'mono': ['Roboto', 'ui-monospace', 'SFMono-Regular', ...],
+              'display': ['Roboto', 'Oswald', ...],
+              'body': ['Roboto', 'Open Sans', ...],
+            }
           },
         },
       };
@@ -66,7 +76,7 @@
     >
       <div class="lg:flex lg:flex-col lg:justify-center lg:gap-4 lg:px-8">
         <h1
-          class="text-[2.5rem] mt-7 lg:mt-0 mb-4 text-[#222743] font-[700] lg:text-6xl"
+          class="text-[2.5rem] mt-7 lg:mt-0 mb-4 text-[#222743] font-[700] lg:text-[3.65rem]"
         >
           Stay updated!
         </h1>
