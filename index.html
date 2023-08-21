@@ -17,6 +17,9 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
 
+    <!-- ================= js ==================== -->
+
+    <script src="email-validation.js"></script>
     <!-- ===================tailwind====================== -->
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,21 +29,23 @@
     <script>
       tailwind.config = {
         theme: {
-          container: {
-            padding: {
-              DEFAULT: "1.5rem",
-              sm: "2rem",
-              lg: "4rem",
-              xl: "5rem",
-              "2xl": "6rem",
+          extend: {
+            container: {
+              padding: {
+                DEFAULT: "1.5rem",
+                sm: "2rem",
+                lg: "4rem",
+                xl: "5rem",
+                "2xl": "6rem",
+              },
             },
             fontFamily: {
-              'sans': ['Roboto', 'ui-sans-serif', 'system-ui', ...],
-              'serif': ['Roboto', 'ui-serif', 'Georgia', ...],
-              'mono': ['Roboto', 'ui-monospace', 'SFMono-Regular', ...],
-              'display': ['Roboto', 'Oswald', ...],
-              'body': ['Roboto', 'Open Sans', ...],
-            }
+              sans: ["Roboto", "ui-sans-serif", "system-ui"],
+              serif: ["Roboto", "ui-serif", "Georgia"],
+              mono: ["Roboto", "ui-monospace", "SFMono-Regular"],
+              display: ["Roboto", "Oswald"],
+              body: ["Roboto", "Open Sans"],
+            },
           },
         },
       };
@@ -64,19 +69,19 @@
   </head>
 
   <body
-    class="lg:bg-gradient-to-r from-pink-500 to-orange-500 w-full h-full lg:flex lg:items-center lg:justify-center lg:h-screen"
+    class="lg:bg-gradient-to-r lg:bg-[#222743] w-full h-full lg:flex lg:items-center lg:justify-center lg:h-screen"
   >
     <img
-      class="w-full lg:hidden"
+      class="w-full lg:hidden illustration-sign-up-img"
       src="./assets/images/illustration-sign-up-mobile.svg"
       alt=""
     />
     <div
-      class="container mb-7 lg:grid lg:grid-cols-2 gap-10 lg:bg-white lg:p-8 lg:max-w-[50vw] lg:m-[0_auto] lg:rounded-[2.5rem]"
+      class="container opacity-0 transition-opacity duration-100 mb-7 lg:grid lg:grid-cols-2 gap-8 lg:bg-white lg:p-8 lg:max-w-[60vw] 2xl:max-w-[50vw] lg:m-[0_auto] lg:rounded-[2.5rem]"
     >
-      <div class="lg:flex lg:flex-col lg:justify-center lg:gap-4 lg:px-8">
+      <div class="lg:flex lg:flex-col lg:justify-center 2xl:gap-4 2xl:px-8">
         <h1
-          class="text-[2.5rem] mt-7 lg:mt-0 mb-4 text-[#222743] font-[700] lg:text-[3.65rem]"
+          class="text-[2.5rem] mt-7 lg:mt-0 mb-4 text-[#222743] font-[700] 2xl:text-[3.65rem] 2"
         >
           Stay updated!
         </h1>
@@ -111,13 +116,14 @@
             />And much more!
           </li>
         </ul>
-        <div class="w-full mb-2">
+        <div class="w-full mb-2 flex justify-between">
           <h2
             id="newsletter"
             class="text-sm font-bold laptop:text-2xl tablet:mb-8 tablet:text-left tablet:text-2xl"
           >
             Email address
           </h2>
+          <div class="text-sm" id="msgemail"></div>
         </div>
         <div class="flex items-center gap-8 mb-5">
           <label
@@ -127,8 +133,9 @@
             <input
               id="newsletter-input"
               type="email"
+              onblur="validateEmail(this)"
               placeholder="email@company.com"
-              class="h-14 w-full border-[1.5px] border-gray-300 rounded-md bg-transparent px-4 placeholder:text-gray-500 placeholder:opacity-50 tablet:w-full"
+              class="h-14 !w-full border-[1.5px] border-gray-300 rounded-md bg-transparent px-4 placeholder:text-gray-500 placeholder:opacity-50 tablet:w-full"
             />
           </label>
         </div>
@@ -144,6 +151,45 @@
         src="assets/images/illustration-sign-up-desktop.svg"
         alt=""
       />
+    </div>
+
+    <!-- ====================modal============================ -->
+
+    <div
+      id="modal"
+      class="container hidden relative lg:pb-0 flex-col h-screen lg:h-auto pt-40 lg:bg-white lg:p-8 lg:max-w-[60vw] 2xl:max-w-[26vw] lg:m-[0_auto] lg:rounded-[2.5rem]"
+    >
+      <div
+        class="lg:flex h-screen lg:h-auto lg:pt-8 lg:flex-col lg:justify-center 2xl:gap-3 2xl:px-8"
+      >
+        <img
+          class="w-14 mb-2"
+          src="assets/images/icon-list.svg"
+          alt="icone de lista"
+        />
+        <h1
+          class="text-[2.5rem] mt-7 lg:mt-0 mb-4 text-[#222743] font-[700] 2xl:text-[3.65rem] lg:leading-[1.1]"
+        >
+          thanks for subscribing
+        </h1>
+        <p class="lg:mb-20 lg:20 text-base font-medium">
+          a confimation email has sent to
+          <span class="font-bold">ash@loremcompany.com</span>. Please open it
+          and click the button inside to confirme your subscription
+        </p>
+        <button
+          id="btn"
+          class="relative hidden xl:flex bottom-14 h-14 items-center justify-center rounded-md bg-gradient-to-r from-[#222743] to-[#222743] hover:from-pink-500 hover:to-[#f97218] w-full px-7 py-4 text-base font-bold capitalize text-white duration-600 hover:brightness-110 focus:brightness-110 hover:shadow-3xl shadow-[#f97218]"
+        >
+          Dismiss message
+        </button>
+      </div>
+      <button
+        id="btn"
+        class="relative xl:hidden bottom-14 flex h-14 items-center justify-center rounded-md bg-gradient-to-r from-[#222743] to-[#222743] hover:from-pink-500 hover:to-[#f97218] w-full px-7 py-4 text-base font-bold capitalize text-white duration-600 hover:brightness-110 focus:brightness-110 hover:shadow-3xl shadow-[#f97218]"
+      >
+        Dismiss message
+      </button>
     </div>
   </body>
 </html>
