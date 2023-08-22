@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const modalButton = document.getElementById("openModal");
   const modal = document.getElementById("modal");
   const contentContainer = document.querySelector(".container");
-  const mobileImage = document.querySelector(".w-full.lg\\:hidden");
+  const mobileImage = document.getElementById("img-mobile");
   const errorMsg = document.getElementById("errorMsg");
 
   function displayErrorMessage(message) {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
       modal.style.display = "flex";
       contentContainer.style.zIndex = "-1";
       contentContainer.style.opacity = "0.1";
-      mobileImage.style.display = "0.1";
+      mobileImage.style.display = "none";
       hideErrorMessage(); // Ocultar a mensagem de erro
     } else {
       // Exibir mensagem de erro se o campo de email estiver vazio
