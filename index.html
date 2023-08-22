@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+
+    <!-- ================= js ==================== -->
+
+    <script src="email-validation.js"></script>
+    <!-- ===================tailwind====================== -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            container: {
+              padding: {
+                DEFAULT: "1.5rem",
+                sm: "2rem",
+                lg: "4rem",
+                xl: "5rem",
+                "2xl": "6rem",
+              },
+            },
+            fontFamily: {
+              sans: ["Roboto", "ui-sans-serif", "system-ui"],
+              serif: ["Roboto", "ui-serif", "Georgia"],
+              mono: ["Roboto", "ui-monospace", "SFMono-Regular"],
+              display: ["Roboto", "Oswald"],
+              body: ["Roboto", "Open Sans"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <title>
+      Frontend Mentor | Newsletter sign-up form with success message
+    </title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+
+  <body
+    class="lg:bg-gradient-to-r lg:bg-[#222743] w-full h-full lg:flex lg:items-center lg:justify-center lg:h-screen"
+  >
+    <img
+      id="img-mobile"
+      class="w-full lg:!hidden illustration-sign-up-img"
+      src="./assets/images/illustration-sign-up-mobile.svg"
+      alt=""
+    />
+    <div
+      class="container opacity-0 transition-opacity duration-100 mb-7 lg:grid lg:grid-cols-2 gap-8 lg:bg-white lg:p-8 lg:max-w-[60vw] 2xl:max-w-[50vw] lg:m-[0_auto] lg:rounded-[2.5rem]"
+    >
+      <div class="lg:flex lg:flex-col lg:justify-center 2xl:gap-4 2xl:px-8">
+        <h1
+          class="text-[2.5rem] mt-7 lg:mt-0 mb-4 text-[#222743] font-[700] 2xl:text-[3.65rem] 2"
+        >
+          Stay updated!
+        </h1>
+        <p class="mb-5 text-base font-medium">
+          Join 60,000+ product managers receiving monthly updates on:
+        </p>
+        <ul class="flex flex-col justify-center gap-3 mb-9">
+          <li
+            class="flex gap-4 text-base font-medium max-w-[30ch] lg:max-w-[50ch]"
+          >
+            <img
+              class="self-start pt-[5px]"
+              src="assets/images/icon-list.svg"
+              alt="icone de lista"
+            />
+            Product discovery and buildins what matters
+          </li>
+          <li
+            class="flex gap-4 text-base font-medium max-w-[30ch] lg:max-w-[50ch]"
+          >
+            <img
+              class="self-start pt-[5px]"
+              src="assets/images/icon-list.svg"
+              alt="icone de lista"
+            />Measuring to ensure updates are a success
+          </li>
+          <li class="flex gap-4 text-base font-medium">
+            <img
+              class="self-start pt-[5px]"
+              src="assets/images/icon-list.svg"
+              alt="icone de lista"
+            />And much more!
+          </li>
+        </ul>
+        <div class="w-full mb-2 flex justify-between">
+          <div class="text-red-500 text-sm mt-1" id="errorMsg"></div>
+        </div>
+        <div class="flex items-center gap-8 mb-5">
+          <label for="newsletter-input" class="block w-full">
+            <div class="flex justify-between">
+              <p
+                class="text-sm font-bold laptop:text-2xl tablet:mb-8 tablet:text-left tablet:text-2xl"
+              >
+                Email address
+              </p>
+              <div
+                id="errorMsg"
+                class="text-sm hidden font-bold laptop:text-2xl tablet:mb-8 tablet:text-left tablet:text-2xl"
+              ></div>
+              <div class="text-sm" id="msgemail"></div>
+            </div>
+
+            <input
+              id="newsletter-input"
+              type="email"
+              onblur="validateEmail(this)"
+              placeholder="email@company.com"
+              class="h-14 !w-full border-[1.5px] border-gray-300 rounded-md bg-transparent px-4 placeholder:text-gray-500 placeholder:opacity-50 tablet:w-full"
+            />
+          </label>
+        </div>
+        <button
+          id="openModal"
+          class="relative flex h-14 items-center justify-center rounded-md bg-gradient-to-r from-[#222743] to-[#222743] hover:from-pink-500 hover:to-[#f97218] w-full px-7 py-4 text-base font-bold capitalize text-white duration-600 hover:brightness-110 focus:brightness-110 hover:shadow-3xl shadow-[#f97218]"
+        >
+          Subscribe to monthly newsletter
+        </button>
+      </div>
+      <img
+        class="w-full hidden lg:block"
+        src="assets/images/illustration-sign-up-desktop.svg"
+        alt=""
+      />
+    </div>
+
+    <!-- ====================modal============================ -->
+
+    <div
+      id="modal"
+      class="container top-0 lg:top-auto bg-white hidden absolute lg:pb-0 flex-col h-screen lg:h-auto pt-40 lg:bg-white lg:p-8 lg:max-w-[60vw] 2xl:max-w-[26vw] lg:m-[0_auto] lg:rounded-[2.5rem]"
+    >
+      <div
+        class="lg:flex h-screen lg:h-auto lg:pt-8 lg:flex-col lg:justify-center 2xl:gap-3 2xl:px-8"
+      >
+        <img
+          class="w-14 mb-2"
+          src="assets/images/icon-list.svg"
+          alt="icone de lista"
+        />
+        <h1
+          class="text-[2.5rem] mt-7 lg:mt-0 mb-4 text-[#222743] font-[700] 2xl:text-[3.65rem] lg:leading-[1.1]"
+        >
+          thanks for subscribing
+        </h1>
+        <p class="lg:mb-20 lg:20 text-base font-medium">
+          a confirmation email has been sent to
+          <span class="font-bold" id="emailDisplayModal"></span>. Please open it
+          and click the button inside to confirm your subscription
+        </p>
+      </div>
+      <button
+        id="btn"
+        class="relative bottom-14 flex h-14 items-center justify-center rounded-md bg-gradient-to-r from-[#222743] to-[#222743] hover:from-pink-500 hover:to-[#f97218] w-full px-7 py-4 text-base font-bold capitalize text-white duration-600 hover:brightness-110 focus:brightness-110 hover:shadow-3xl shadow-[#f97218]"
+      >
+        Dismiss message
+      </button>
+    </div>
+  </body>
+</html>
