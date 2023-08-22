@@ -117,19 +117,23 @@
           </li>
         </ul>
         <div class="w-full mb-2 flex justify-between">
-          <h2
-            id="newsletter"
-            class="text-sm font-bold laptop:text-2xl tablet:mb-8 tablet:text-left tablet:text-2xl"
-          >
-            Email address
-          </h2>
-          <div class="text-sm" id="msgemail"></div>
+          <div class="text-red-500 text-sm mt-1" id="errorMsg"></div>
         </div>
         <div class="flex items-center gap-8 mb-5">
-          <label
-            for="newsletter-input"
-            class="flex items-center gap-3 flex-1 w-full"
-          >
+          <label for="newsletter-input" class="block w-full">
+            <div class="flex justify-between">
+              <p
+                class="text-sm font-bold laptop:text-2xl tablet:mb-8 tablet:text-left tablet:text-2xl"
+              >
+                Email address
+              </p>
+              <div id="errorMsg"
+                class="text-sm hidden font-bold laptop:text-2xl tablet:mb-8 tablet:text-left tablet:text-2xl"
+              >
+            </div>
+              <div class="text-sm" id="msgemail"></div>
+            </div>
+
             <input
               id="newsletter-input"
               type="email"
@@ -157,7 +161,7 @@
 
     <div
       id="modal"
-      class="container hidden relative lg:pb-0 flex-col h-screen lg:h-auto pt-40 lg:bg-white lg:p-8 lg:max-w-[60vw] 2xl:max-w-[26vw] lg:m-[0_auto] lg:rounded-[2.5rem]"
+      class="container top-0 sm:top-auto bg-white hidden absolute lg:pb-0 flex-col h-screen lg:h-auto pt-40 lg:bg-white lg:p-8 lg:max-w-[60vw] 2xl:max-w-[26vw] lg:m-[0_auto] lg:rounded-[2.5rem]"
     >
       <div
         class="lg:flex h-screen lg:h-auto lg:pt-8 lg:flex-col lg:justify-center 2xl:gap-3 2xl:px-8"

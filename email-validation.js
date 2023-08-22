@@ -4,25 +4,75 @@ document.addEventListener("DOMContentLoaded", function() {
   const modal = document.getElementById("modal");
   const contentContainer = document.querySelector(".container");
   const mobileImage = document.querySelector(".w-full.lg\\:hidden");
+  const errorMsg = document.getElementById("errorMsg");
 
-  // Adicionar evento blur ao campo de email
+  function displayErrorMessage(message) {
+    errorMsg.innerHTML = message;
+    errorMsg.style.display = "block";
+  }
+
+  function hideErrorMessage() {
+    errorMsg.style.display = "none";
+  }
+
+  emailField.addEventListener("input", function() {
+    hideErrorMessage(); // Ocultar a mensagem de erro quando o usuário começa a digitar
+  });
+
+  modalButton.addEventListener("click", function() {
+    if (
+      emailField.style.borderColor === "green" &&
+      emailField.value.trim() !== ""
+    ) {
+      // Exibir o modal
+      modal.style.display = "flex";
+      contentContainer.style.zIndex = "-1";
+      contentContainer.style.opacity = "0.1";
+      mobileImage.style.display = "0.1";
+      hideErrorMessage(); // Ocultar a mensagem de erro
+    } else {
+      // Exibir mensagem de erro se o campo de email estiver vazio
+      displayErrorMessage("Required field");
+    }
+  });
+
   emailField.addEventListener("blur", function() {
     validateEmail(emailField);
   });
 
-  // Adicionar evento click ao botão do modal
+  
   modalButton.addEventListener("click", function() {
     if (
       emailField.style.borderColor === "green" &&
       emailField.value.trim() !== ""
     ) {
       modal.style.display = "flex";
-      contentContainer.style.display = "none";
-      mobileImage.style.display = "none"; // Remover a imagem no modal
+      contentContainer.style.zIndex = "-1"; // Aplicar z-index negativo
+      contentContainer.style.opacity = "0.1"; // Reduzir opacidade
+      mobileImage.style.opacity = "0.1"; // Reduzir opacidade da imagem mobile
     }
   });
 
-  // Função de validação de email
+  
+  function displayEmptyFieldError() {
+    errorMsg.style.display = "block";
+    errorMsg.innerHTML = "Escreva um email, seu jumento!";
+  }
+  
+
+  function closeModal() {
+    modal.style.display = "none";
+    contentContainer.style.zIndex = "auto"; // Restaurar z-index
+    contentContainer.style.opacity = "1"; // Restaurar opacidade
+    mobileImage.style.opacity = "1"; // Restaurar opacidade da imagem mobile
+  }
+  
+  // Adicionar evento click ao botão "Dismiss message"
+  const dismissButton = document.getElementById("btn"); // Botão "Dismiss message"
+  dismissButton.addEventListener("click", closeModal);
+  
+
+  
   function validateEmail(field) {
     usuario = field.value.substring(0, field.value.indexOf("@"));
     dominio = field.value.substring(field.value.indexOf("@") + 1, field.value.length);
@@ -48,7 +98,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  // Remover a classe opacity-0 após 1 segundo (1000ms) para o fade-in
+  function displayEmptyFieldError() {
+    const errorMsg = document.getElementById("errorMsg");
+    errorMsg.style.display = "block";
+    errorMsg.innerHTML = "Escreva um email, seu jumento!";
+  }
+  
   setTimeout(function() {
     contentContainer.classList.remove("opacity-0");
   }, 1000);
