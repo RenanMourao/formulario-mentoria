@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
       modal.style.display = "flex";
       contentContainer.style.zIndex = "-1"; // Aplicar z-index negativo
       contentContainer.style.opacity = "0.1"; // Reduzir opacidade
-      mobileImage.style.opacity = "0.1"; // Reduzir opacidade da imagem mobile
+      mobileImage.style.display = "none"; // Reduzir opacidade da imagem mobile
     }
   });
 
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
     modal.style.display = "none";
     contentContainer.style.zIndex = "auto"; // Restaurar z-index
     contentContainer.style.opacity = "1"; // Restaurar opacidade
-    mobileImage.style.opacity = "1"; // Restaurar opacidade da imagem mobile
+    mobileImage.style.display = "block"; // Restaurar opacidade da imagem mobile
   }
   
   // Adicionar evento click ao botão "Dismiss message"
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function displayEmptyFieldError() {
     const errorMsg = document.getElementById("errorMsg");
     errorMsg.style.display = "block";
-    errorMsg.innerHTML = "Escreva um email, seu jumento!";
+    errorMsg.innerHTML = "Required field";
   }
   
   setTimeout(function() {
