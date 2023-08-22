@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const emailDisplayModal = document.getElementById("emailDisplayModal");
 
   emailField.addEventListener("input", function() {
-    emailDisplayModal.textContent = emailField.value; // Atualiza o email no modal enquanto o usuário digita
+    emailDisplayModal.textContent = emailField.value;
   });
 
   function displayErrorMessage(message) {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   emailField.addEventListener("input", function() {
-    hideErrorMessage(); // Ocultar a mensagem de erro quando o usuário começa a digitar
+    hideErrorMessage(); 
   });
 
   modalButton.addEventListener("click", function() {
@@ -34,9 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
       contentContainer.style.zIndex = "-1";
       contentContainer.style.opacity = "0.1";
       mobileImage.style.display = "none";
-      hideErrorMessage(); // Ocultar a mensagem de erro
+      hideErrorMessage(); 
     } else {
-      // Exibir mensagem de erro se o campo de email estiver vazio
       displayErrorMessage("Required field");
       emailDisplayModal.textContent = emailField.value;
     }
@@ -53,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
       emailField.value.trim() !== ""
     ) {
       modal.style.display = "flex";
-      contentContainer.style.zIndex = "-1"; // Aplicar z-index negativo
-      contentContainer.style.opacity = "0.1"; // Reduzir opacidade
-      mobileImage.style.display = "none"; // Reduzir opacidade da imagem mobile
+      contentContainer.style.zIndex = "-1"; 
+      contentContainer.style.opacity = "0.1"; 
+      mobileImage.style.display = "none";
     }
   });
 
@@ -68,13 +67,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function closeModal() {
     modal.style.display = "none";
-    contentContainer.style.zIndex = "auto"; // Restaurar z-index
-    contentContainer.style.opacity = "1"; // Restaurar opacidade
-    mobileImage.style.display = "block"; // Restaurar opacidade da imagem mobile
+    contentContainer.style.zIndex = "auto"; 
+    contentContainer.style.opacity = "1";
+    mobileImage.style.display = "block";
   }
   
-  // Adicionar evento click ao botão "Dismiss message"
-  const dismissButton = document.getElementById("btn"); // Botão "Dismiss message"
+  
+  const dismissButton = document.getElementById("btn");
   dismissButton.addEventListener("click", closeModal);
   
 
