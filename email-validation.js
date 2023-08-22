@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function() {
   const contentContainer = document.querySelector(".container");
   const mobileImage = document.getElementById("img-mobile");
   const errorMsg = document.getElementById("errorMsg");
+  const emailDisplayModal = document.getElementById("emailDisplayModal");
+
+  emailField.addEventListener("input", function() {
+    emailDisplayModal.textContent = emailField.value; // Atualiza o email no modal enquanto o usuário digita
+  });
 
   function displayErrorMessage(message) {
     errorMsg.innerHTML = message;
@@ -33,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       // Exibir mensagem de erro se o campo de email estiver vazio
       displayErrorMessage("Required field");
+      emailDisplayModal.textContent = emailField.value;
     }
   });
 

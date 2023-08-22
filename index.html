@@ -72,7 +72,7 @@
     class="lg:bg-gradient-to-r lg:bg-[#222743] w-full h-full lg:flex lg:items-center lg:justify-center lg:h-screen"
   >
     <img
-    id="img-mobile"
+      id="img-mobile"
       class="w-full lg:!hidden illustration-sign-up-img"
       src="./assets/images/illustration-sign-up-mobile.svg"
       alt=""
@@ -128,10 +128,10 @@
               >
                 Email address
               </p>
-              <div id="errorMsg"
+              <div
+                id="errorMsg"
                 class="text-sm hidden font-bold laptop:text-2xl tablet:mb-8 tablet:text-left tablet:text-2xl"
-              >
-            </div>
+              ></div>
               <div class="text-sm" id="msgemail"></div>
             </div>
 
@@ -178,16 +178,10 @@
           thanks for subscribing
         </h1>
         <p class="lg:mb-20 lg:20 text-base font-medium">
-          a confimation email has sent to
-          <span class="font-bold">ash@loremcompany.com</span>. Please open it
-          and click the button inside to confirme your subscription
+          a confirmation email has been sent to
+          <span class="font-bold" id="emailDisplayModal"></span>. Please open it
+          and click the button inside to confirm your subscription
         </p>
-        <!-- <button
-          id="btn"
-          class="relative xl:flex bottom-14 h-14 items-center justify-center rounded-md bg-gradient-to-r from-[#222743] to-[#222743] hover:from-pink-500 hover:to-[#f97218] w-full px-7 py-4 text-base font-bold capitalize text-white duration-600 hover:brightness-110 focus:brightness-110 hover:shadow-3xl shadow-[#f97218]"
-        >
-          Dismiss message
-        </button> -->
       </div>
       <button
         id="btn"
