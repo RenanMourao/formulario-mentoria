@@ -57,12 +57,6 @@ document.addEventListener("DOMContentLoaded", function() {
       mobileImage.style.display = "none";
     }
   });
-
-  
-  function displayEmptyFieldError() {
-    errorMsg.style.display = "block";
-    errorMsg.innerHTML = "Escreva um email, seu jumento!";
-  }
   
 
   function closeModal() {
